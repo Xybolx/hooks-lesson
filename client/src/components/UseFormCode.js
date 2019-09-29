@@ -15,7 +15,7 @@ const useForm = () => {
     const handleChange = ev => {
         ev.persist();
         const { name, value } = ev.target;
-        setState(state => ({ ...state, [name]: value }))
+        setState(state => ({ ...state, [name]: value }));
     };
 
     // handle clear form

@@ -14,7 +14,7 @@ const Form = () => {
 
     return (
         <div className="section">
-            <h1>Username Form</h1>
+            <h1>User/Number Form</h1>
             <h2>The User Is: <span className="font-weight-bold">{values.username}</span></h2>
             <h2>The Number Is: <span className="font-weight-bold">{values.number}</span></h2>           
             <form onSubmit={handleSubmit}>

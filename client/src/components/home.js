@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CounterClass from "./counterClass";
 import CounterClassCode from "./counterClassCode";
 import Counter from "./counter";
@@ -10,32 +10,19 @@ import "../../node_modules/highlight.js/styles/dracula.css";
 
 const Home = () => {
 
-    const [isVisible, setIsVisible] = useState(false);
-
-    const toggle = () => setIsVisible(!isVisible);
-
     return (
         <div className="col-md-6 offset-md-3">
-            <div className="logo">
+            <div className="container">
                 <img className="img-fluid" alt="React Logo" src="logo192.png" />
             </div>
             <h1>React Hooks Lesson</h1>
-            <button onClick={toggle} className="btn btn-link btn-lg">
-                Toggle Code
-            </button>
             <CounterClass />
-            <div style={isVisible ? { display: "block" } : { display: "none" }}>
-                <CounterClassCode />
-            </div>
+            <CounterClassCode />
             <Counter />
-            <div style={isVisible ? { display: "block" } : { display: "none" }}>
-                <CounterCode />
-            </div>
+            <CounterCode />
             <Form />
-            <div style={isVisible ? { display: "block" } : { display: "none" }}>
-                <FormCode />
-                <UseFormCode />
-            </div>
+            <FormCode />
+            <UseFormCode />
         </div>
     );
 };

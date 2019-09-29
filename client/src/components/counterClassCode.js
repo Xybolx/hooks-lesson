@@ -10,22 +10,27 @@ class CounterClass extends Component {
     constructor(props) {
         super(props);
 
+        // state
         this.state = {
             count: 0
         };
 
+        // function to increment count
         this.increment = () => {
             this.setState({ count: this.state.count + 1 });
         };
 
+        // function to decrement count
         this.decrement = () => {
             this.setState({ count: this.state.count - 1 });
         };
 
+        // function to clear count to 0
         this.clear = () => {
             this.setState({ count: 0 });
         };
     };
+    
     render() {
         return (
             <div className="section">
