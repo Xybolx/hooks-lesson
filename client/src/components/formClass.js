@@ -4,8 +4,10 @@ class FormClass extends Component {
 
         // state
         state = {
+            email: "",
             username: "",
             password: "",
+            isValidEmail: false,
             isValidUsername: false,
             isValidPassword: false
         };
@@ -14,8 +16,17 @@ class FormClass extends Component {
         validate = () => {
 
             // comparing our inputs to a regEx
+            const emailMatch = /.+@.+\..+/.test(this.state.email);
             const usernameMatch = /^(?=[0-9a-zA-Z#@$?]{3,}$).*/.test(this.state.username);
             const passwordMatch = /^(?=[0-9a-zA-Z#@$?]{6,}$).*/.test(this.state.password);
+
+            // if email input matches our regEx set isValidEmail to true
+            if (emailMatch) {
+                this.setState({ ...this.state.isValidEmail, isValidEmail: true });
+                // if email input doesn't match our regEx set isValidEmail to false
+            } else if (!emailMatch) {
+                this.setState({ ...this.state.isValidEmail, isValidEmail: false });
+            }
 
             // if username input matches our regEx set isValidUsername to true
             if (usernameMatch) {
@@ -45,11 +56,13 @@ class FormClass extends Component {
         // handleSubmit
         handleSubmit = ev => {
             ev.preventDefault();
-            console.log(this.state.username, this.state.password);
+            console.log(this.state.email, this.state.username, this.state.password);
             // clear the form and reset validation
             this.setState({
+                email: "",
                 username: "",
                 password: "",
+                isValidEmail: false,
                 isValidUsername: false,
                 isValidPassword: false
             });
@@ -60,6 +73,25 @@ class FormClass extends Component {
             <div>
                 <h1 className="display-4">Class Form</h1>
                 <form className="text-left col-md-6 offset-md-3" onSubmit={this.handleSubmit}>
+                    <label className="lead">Email</label>
+                    <div className="form-group">
+                        <input
+                            required
+                            className="form-control"
+                            type="email"
+                            name="email"
+                            onChange={this.handleChange}
+                            value={this.state.email}
+                            placeholder="type an email address..."
+                            autoComplete="off"
+                        />
+                        <div>
+                            <small
+                                className={this.state.email && this.state.isValidEmail ? "text-success" : this.state.email && !this.state.isValidEmail ? "text-danger" : "text-dark"}>
+                                {this.state.email && this.state.isValidEmail ? "Valid email!" : this.state.email && !this.state.isValidEmail ? "Must be a valid email address!" : ""}
+                            </small>
+                        </div>
+                    </div>
                     <label className="lead">Username</label>
                     <div className="form-group">
                         <input
@@ -100,9 +132,9 @@ class FormClass extends Component {
                     </div>
                     <div className="text-center col-md-6 offset-md-3">
                         <button
-                            className="btn btn-success"
-                            // submit button is disabled while either this.state.isValidUsername or this.state.isValidPassword is false
-                            disabled={!this.state.isValidUsername || !this.state.isValidPassword}
+                            className="btn btn-success mb-5"
+                            // submit button is disabled while this.state.isValidEmail or this.state.isValidUsername or this.state.isValidPassword is false
+                            disabled={!this.state.isValidEmail || !this.state.isValidUsername || !this.state.isValidPassword}
                             type="submit">
                             Submit
                         </button>
