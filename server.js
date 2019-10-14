@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Static directory
 app.use(express.static("client/public"));
+app.use(express.static("client/src/imgs"));
 
 // if no route is found
 app.get("/*", function (req, res) {

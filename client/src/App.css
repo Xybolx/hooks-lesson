@@ -1,35 +1,36 @@
-.App {
-  text-align: center;
+@keyframes Rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.App-logo {
-  height: 40vmin;
+@keyframes RotateTitle {
+  from {
+    color: yellow;
+    /* transform: rotateX(0deg); */
+  }
+  to {
+    color: red;
+    /* transform: rotateX(360deg); */
+  }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.img-fluid {
+  animation: Rotate 5s infinite linear;
+  max-width: 30px;
+  border: solid;
+  border-radius: 100%;
 }
 
-.App-link {
-  color: #09d3ac;
+.jumbotron {
+  background: transparent;
 }
 
-.section {
-  border: double black;
-}
-
-.logo {
-  text-align: center;
-  height: 75px;
-}
-
-.font-weight-bold {
-  color: red;
+.list-group {
+  /* list-style-image: url("./imgs/logo192.png"); */
+  list-style-position: outside;
+  list-style-type: upper-alpha;
 }
