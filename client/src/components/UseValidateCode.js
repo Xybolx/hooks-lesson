@@ -1,4 +1,10 @@
-// import useEffect and useState from react
+import React from "react";
+import ClipboardItem from "./clipboardItem";
+
+const UseValidateCode = () => {
+
+    const code =
+        `// import useEffect and useState from react
 // we don't need to import React because we aren't returning any jsx in this component
 import { useEffect, useState } from "react";
 
@@ -14,7 +20,7 @@ const useValidate = values => {
     // useEffect replaces componentDidMount/DidUpdate/WillUnmount and runs only when it's dependencies change
     useEffect(() => {
         // comparing our values to a regEx
-        const emailMatch = /.+@.+\....+/.test(values.email);
+        const emailMatch = /.+@.+\\....+/.test(values.email);
         const usernameMatch = /^(?=[0-9a-zA-Z#@$?]{3,}$).*/.test(values.username);
         const passwordMatch = /^(?=[0-9a-zA-Z#@$?]{6,}$).*/.test(values.password);
 
@@ -58,4 +64,32 @@ const useValidate = values => {
 
 };
 
-export default useValidate;
+export default useValidate;`;
+
+    return (
+        <div>
+            <button className="btn btn-link btn-lg" data-toggle="modal" data-target="#useValidateModalLong">
+                useValidate Code
+            </button>
+            <div className="modal fade" id="useValidateModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title lead" id="exampleModalLongTitle">useValidate Code</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <ClipboardItem
+                                code={code}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default UseValidateCode;

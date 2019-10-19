@@ -5,6 +5,7 @@ import CounterClass from "./components/counterClass";
 import Counter from "./components/counter";
 import FormClass from "./components/formClass";
 import Form from "./components/form";
+import Snippets from "./components/snippets";
 import './App.css';
 
 const App = () => {
@@ -33,7 +34,11 @@ const App = () => {
       {
         name: "Hooks Form",
         path: "/form"
-      }
+      },
+      {
+        name: "Snippets",
+        path: "/snippets"
+      },
     ];
     setPages(navArray);
   }, []);
@@ -62,6 +67,7 @@ const App = () => {
           <Route exact path="/counter" component={Counter} />
           <Route exact path="/formclass" component={FormClass} />
           <Route exact path="/form" component={Form} />
+          <Route exact path="/snippets" component={Snippets} />
         </Switch>
       </div>
     </Router>

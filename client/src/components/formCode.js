@@ -1,10 +1,16 @@
-import React from 'react';
+import React from "react";
+import ClipboardItem from "./clipboardItem";
+
+const FormCode = () => {
+
+    const code =
+        `import React from 'react';
 import useForm from './useForm';
 import useValidate from './useValidate';
 
 const Form = () => {
 
-    // state 
+    // state // 
     const [values, handleChange, handleClearForm] = useForm();
     const [isValidEmail, isValidUsername, isValidPassword, resetValidate] = useValidate(values);
 
@@ -33,16 +39,12 @@ const Form = () => {
                         type="email"
                         name="email"
                         onChange={handleChange}
-                        // sets the initial state of email input to an empty string
                         value={email || ""}
                         placeholder="type an email address..."
                         autoComplete="off"
                     />
                     <div>
-                        <small
-                            // email is the value of the email input
-                            // isValidEmail is returned by useValidate
-                            className={email && isValidEmail ? "text-success" : email && !isValidEmail ? "text-danger" : "text-dark"}>
+                        <small className={email && isValidEmail ? "text-success" : email && !isValidEmail ? "text-danger" : "text-dark"}>
                             {email && isValidEmail ? "Valid email!" : email && !isValidEmail ? "Must be a valid email address!" : ""}
                         </small>
                     </div>
@@ -61,10 +63,7 @@ const Form = () => {
                         autoComplete="off"
                     />
                     <div>
-                        <small
-                            // username is the value of the username input
-                            // isValidUsername is returned by useValidate
-                            className={username && isValidUsername ? "text-success" : username && !isValidUsername ? "text-danger" : "text-dark"}>
+                        <small className={username && isValidUsername ? "text-success" : username && !isValidUsername ? "text-danger" : "text-dark"}>
                             {username && isValidUsername ? "Valid username!" : username && !isValidUsername ? "Username must be at least 3 characters!" : ""}
                         </small>
                     </div>
@@ -77,16 +76,12 @@ const Form = () => {
                         type="password"
                         name="password"
                         onChange={handleChange}
-                        // sets the initial state of password input to an empty string 
                         value={password || ""}
                         placeholder="type a password..."
                         autoComplete="current-password"
                     />
                     <div>
-                        <small
-                            // password is the value of the password input
-                            // isValidPassword is returned by useValidate hook 
-                            className={password && isValidPassword ? "text-success" : password && !isValidPassword ? "text-danger" : "text-dark"}>
+                        <small className={password && isValidPassword ? "text-success" : password && !isValidPassword ? "text-danger" : "text-dark"}>
                             {password && isValidPassword ? "Valid password!" : password && !isValidPassword ? "Password must be at least 6 characters!" : ""}
                         </small>
                     </div>
@@ -94,7 +89,6 @@ const Form = () => {
                 <div className="text-center col-md-6 offset-md-3">
                     <button
                         className="btn btn-success"
-                        // submit button is disabled while isValidEmail or isValidUsername or isValidPassword is false
                         disabled={!isValidEmail || !isValidUsername || !isValidPassword}
                         type="submit">
                         Submit
@@ -105,4 +99,32 @@ const Form = () => {
     );
 };
 
-export default Form;
+export default Form;`;
+
+    return (
+        <div>
+            <button className="btn btn-link btn-lg" data-toggle="modal" data-target="#hooksFormModalLong">
+                Hooks Form Code
+            </button>
+            <div className="modal fade" id="hooksFormModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title lead" id="exampleModalLongTitle">Hooks Form Code</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <ClipboardItem
+                                code={code}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default FormCode;

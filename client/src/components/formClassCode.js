@@ -1,72 +1,78 @@
-import React, { Component } from "react";
+import React from "react";
+import ClipboardItem from "./clipboardItem";
+
+const FormClassCode = () => {
+
+    const code =
+        `import React, { Component } from "react";
 
 class FormClass extends Component {
 
-    // state
-    state = {
-        email: "",
-        username: "",
-        password: "",
-        isValidEmail: false,
-        isValidUsername: false,
-        isValidPassword: false
-    };
-
-    // function to validate our inputs
-    validate = () => {
-
-        // comparing our inputs to a regEx
-        const emailMatch = /.+@.+\....+/.test(this.state.email);
-        const usernameMatch = /^(?=[0-9a-zA-Z#@$?]{3,}$).*/.test(this.state.username);
-        const passwordMatch = /^(?=[0-9a-zA-Z#@$?]{6,}$).*/.test(this.state.password);
-
-        // if email input matches our regEx set isValidEmail to true
-        if (emailMatch) {
-            this.setState({ ...this.state.isValidEmail, isValidEmail: true });
-            // if email input doesn't match our regEx set isValidEmail to false
-        } else if (!emailMatch) {
-            this.setState({ ...this.state.isValidEmail, isValidEmail: false });
-        }
-
-        // if username input matches our regEx set isValidUsername to true
-        if (usernameMatch) {
-            this.setState({ ...this.state.isValidUsername, isValidUsername: true });
-            // if username input doesn't match our regEx set isValidUsername to false
-        } else if (!usernameMatch) {
-            this.setState({ ...this.state.isValidUsername, isValidUsername: false });
-        }
-
-        // if password input matches our regEx set isValidPassword to true
-        if (passwordMatch) {
-            this.setState({ ...this.state.isValidPassword, isValidPassword: true });
-            // if password input doesn't match our regEx set isValidPassword to false
-        } else if (!passwordMatch) {
-            this.setState({ ...this.state.isValidPassword, isValidPassword: false });
-        }
-    };
-
-    // handleChange
-    handleChange = ev => {
-        // de-structure ev.target.name/ev.target.value
-        const { name, value } = ev.target;
-        // this.setState can take a second argument so we run this.validate each time it is called
-        this.setState({ [name]: value }, this.validate);
-    };
-
-    // handleSubmit
-    handleSubmit = ev => {
-        ev.preventDefault();
-        console.log(this.state.email, this.state.username, this.state.password);
-        // clear the form and reset validation
-        this.setState({
+        // state
+        state = {
             email: "",
             username: "",
             password: "",
             isValidEmail: false,
             isValidUsername: false,
             isValidPassword: false
-        });
-    };
+        };
+
+        // function to validate our inputs
+        validate = () => {
+
+            // comparing our inputs to a regEx
+            const emailMatch = /.+@.+\\....+/.test(this.state.email);
+            const usernameMatch = /^(?=[0-9a-zA-Z#@$?]{3,}$).*/.test(this.state.username);
+            const passwordMatch = /^(?=[0-9a-zA-Z#@$?]{6,}$).*/.test(this.state.password);
+
+            // if email input matches our regEx set isValidEmail to true
+            if (emailMatch) {
+                this.setState({ ...this.state.isValidEmail, isValidEmail: true });
+                // if email input doesn't match our regEx set isValidEmail to false
+            } else if (!emailMatch) {
+                this.setState({ ...this.state.isValidEmail, isValidEmail: false });
+            }
+
+            // if username input matches our regEx set isValidUsername to true
+            if (usernameMatch) {
+                this.setState({ ...this.state.isValidUsername, isValidUsername: true });
+                // if username input doesn't match our regEx set isValidUsername to false
+            } else if (!usernameMatch) {
+                this.setState({ ...this.state.isValidUsername, isValidUsername: false });
+            }
+
+            // if password input matches our regEx set isValidPassword to true
+            if (passwordMatch) {
+                this.setState({ ...this.state.isValidPassword, isValidPassword: true });
+                // if password input doesn't match our regEx set isValidPassword to false
+            } else if (!passwordMatch) {
+                this.setState({ ...this.state.isValidPassword, isValidPassword: false });
+            }
+        };
+
+        // handleChange
+        handleChange = ev => {
+            // de-structure ev.target.name/ev.target.value
+            const { name, value } = ev.target;
+            // this.setState can take a second argument so we run this.validate each time it is called
+            this.setState({ [name]: value }, this.validate);
+        };
+
+        // handleSubmit
+        handleSubmit = ev => {
+            ev.preventDefault();
+            console.log(this.state.email, this.state.username, this.state.password);
+            // clear the form and reset validation
+            this.setState({
+                email: "",
+                username: "",
+                password: "",
+                isValidEmail: false,
+                isValidUsername: false,
+                isValidPassword: false
+            });
+        };
 
     render() {
         return (
@@ -133,7 +139,6 @@ class FormClass extends Component {
                     <div className="text-center col-md-6 offset-md-3">
                         <button
                             className="btn btn-success"
-                            // submit button is disabled while this.state.isValidEmail or this.state.isValidUsername or this.state.isValidPassword is false
                             disabled={!this.state.isValidEmail || !this.state.isValidUsername || !this.state.isValidPassword}
                             type="submit">
                             Submit
@@ -142,7 +147,35 @@ class FormClass extends Component {
                 </form>
             </div>
         );
-    }
+    };
 };
 
-export default FormClass;
+export default FormClass;`
+
+    return (
+        <div>
+            <button className="btn btn-link btn-lg" data-toggle="modal" data-target="#exampleModalLong">
+                Class Form Code
+            </button>
+            <div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title lead" id="exampleModalLongTitle">Class Form Code</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <ClipboardItem
+                                code={code}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default FormClassCode;

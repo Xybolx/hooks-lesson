@@ -18,6 +18,18 @@
   }
 }
 
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
 .img-fluid {
   animation: Rotate 5s infinite linear;
   max-width: 30px;
@@ -33,4 +45,48 @@
   /* list-style-image: url("./imgs/logo192.png"); */
   list-style-position: outside;
   list-style-type: upper-alpha;
+  text-align: left;
+}
+
+#reason-one {
+  /* overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  /* letter-spacing: .5px; */
+  animation: 
+    typing 18s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+#reason-two {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .5px solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .5px; /* Adjust as needed */
+  animation: 
+    typing 9s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+#reason-three {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .5px solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .5px; /* Adjust as needed */
+  animation: 
+    typing 12s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+#reason-four {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .5px solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .5px; /* Adjust as needed */
+  animation: 
+    typing 15s steps(40, end),
+    blink-caret .75s step-end infinite;
 }

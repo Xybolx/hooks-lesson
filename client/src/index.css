@@ -14,4 +14,6 @@ code {
 
 pre {
   color: white;
+  text-align: justify;
+  text-justify: newspaper;
 }
