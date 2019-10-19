@@ -1,78 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import useSpeechRecognition from "./useSpeechRecognition";
+import useSpeechSynthesis from "./useSpeechSynthesis";
 
 const SpeechRecognition = () => {
 
+    const el0 = useRef();
+
+    const el1 = useRef();
+
+    const el2 = useRef();
+
+    const el3 = useRef();
+
     const [value, setValue] = useState("");
 
-    const [date, setDate] = useState("");
+    const [isSpeaking, setIsSpeaking] = useState(false);
 
-    const [time, setTime] = useState("");
+    const [reasonArray, setReasonArray] = useState([]);
 
-    const [speakingDate, setSpeakingDate] = useState(false);
+    const reasons = ["A., We can write less code", "B., We can avoid, this, keyword confusion", "C., We can use state in functional components", "D., We can reuse stateful logic with custom hooks"];
 
-    const [speakingTime, setSpeakingTime] = useState(false);
-
-    const [speakingHooks, setSpeakingHooks] = useState(false);
+    useEffect(() => {
+        setReasonArray(reasons);
+        // eslint-disable-next-line
+    }, []);
 
     const onEnd = () => {
         console.log("end");
-        setTime("");
-        setDate("");
     };
 
     const onResult = result => {
         setValue(result);
         console.log(result);
-        if (result === "what is the date") {
-            const date = new Date(Date.now());
-            setSpeakingDate(true);
-            setTime("");
-            setDate(`Today is ${date.toLocaleDateString()}`);
-        } else if (result === "what is the time") {
-            const time = new Date(Date.now());
-            setSpeakingTime(true);
-            setDate("");
-            setTime(time.toLocaleTimeString());
-        } else if (result.includes("computer why should we use hooks")) {
-            setSpeakingHooks(true);
+        if (result.includes("computer why should we use hooks")) {
+            setIsSpeaking(true);
         }
     };
 
     const { listen, listening, stop, supported } = useSpeechRecognition({ onResult, onEnd });
 
-    useEffect(() => {
-        if (speakingDate) {
-            const date = new Date(Date.now());
-            const speaker = new SpeechSynthesisUtterance(`today is ${date.toLocaleDateString()}`);
-            speechSynthesis.speak(speaker);
-            speaker.addEventListener("end", () => setSpeakingDate(false));
-            return () => {
-                speaker.removeEventListener("end", () => setSpeakingDate(false));
-            };
-        } else if (speakingTime) {
-            const time = new Date(Date.now());
-            const speaker = new SpeechSynthesisUtterance(`the time is ${time.toLocaleTimeString({ hour: "2-digit", minute: "2-digit", second: "2-digit" })}`);
-            speechSynthesis.speak(speaker);
-            speaker.addEventListener("end", () => setSpeakingTime(false));
-            return () => {
-                speaker.removeEventListener("end", () => setSpeakingTime(false));
-            };
-        } else if (speakingHooks) {
-            const reasons = ["we can write less code", "we can avoid...this...key word confusion", "...we can use state in functional components", "...we can reuse stateful logic with custom hooks"];
-            const speaker = new SpeechSynthesisUtterance(`some reasons to use hooks are:...A, ${reasons[0]} ...B, ${reasons[1]} ...C, ${reasons[2]} and...D, ${reasons[3]}`);
-            speaker.rate = 0.6;
-            speechSynthesis.speak(speaker);
-            speaker.addEventListener("end", () => setSpeakingHooks(false));
-            return () => {
-                speaker.removeEventListener("end", () => setSpeakingHooks(false));
-            };
+    useSpeechSynthesis(`some reasons to use hooks are:...${reasonArray[0]}, ...${reasonArray[1]}, ...${reasonArray[2]} and..., ...${reasonArray[3]}`, isSpeaking);
+
+    const toggle = 
+    listening
+        ? () => {
+            stop();
+            setIsSpeaking(false);
         }
-    }, [speakingDate, speakingTime, speakingHooks]);
-
-
-    const toggle = listening
-        ? stop
         : () => listen();
 
     const handleSubmit = ev => {
@@ -81,11 +55,15 @@ const SpeechRecognition = () => {
 
     return (
         <div>
-            <h2>{date}</h2>
-            <h2>{time}</h2>
             <div>
                 <button type="button" className="btn btn-link btn-md" onClick={toggle}><i className="fas fa-microphone-alt" /> {listening ? 'Stop Listening' : 'Start Listening'}</button>
             </div>
+            <ul>
+                <li style={isSpeaking ? { display: "block" } : { display: "none" }} ref={el0} id="reason0" className="lead">A. We can write less code</li>
+                <li style={isSpeaking ? { display: "block" } : { display: "none" }} ref={el1} id="reason1" className="lead">B. We can avoid "this" keyword confusion</li>
+                <li style={isSpeaking ? { display: "block" } : { display: "none" }} ref={el2} id="reason2" className="lead">C. We can use state in functional components</li>
+                <li style={isSpeaking ? { display: "block" } : { display: "none" }} ref={el3} id="reason3" className="lead">D. We can reuse stateful logic with custom hooks</li>
+            </ul>
             <form style={{ display: "none" }} onSubmit={handleSubmit} id="speech-recognition-form">
                 {!supported && (
                     <p>Oh no, it looks like your browser doesn&#39;t support Speech Recognition.</p>

@@ -9,7 +9,7 @@ class FormClass extends Component {
         password: "",
         isValidEmail: false,
         isValidUsername: false,
-        isValidPassword: false
+        isValidPassword: false,
     };
 
     // function to validate our inputs
@@ -64,7 +64,7 @@ class FormClass extends Component {
             password: "",
             isValidEmail: false,
             isValidUsername: false,
-            isValidPassword: false
+            isValidPassword: false,
         });
     };
 
@@ -130,9 +130,9 @@ class FormClass extends Component {
                             </small>
                         </div>
                     </div>
-                    <div className="text-center col-md-6 offset-md-3">
+                    <div className="text-center col-md-6 offset-md-3 mb-5">
                         <button
-                            className="btn btn-success"
+                            className="btn btn-success mb-5"
                             // submit button is disabled while this.state.isValidEmail or this.state.isValidUsername or this.state.isValidPassword is false
                             disabled={!this.state.isValidEmail || !this.state.isValidUsername || !this.state.isValidPassword}
                             type="submit">

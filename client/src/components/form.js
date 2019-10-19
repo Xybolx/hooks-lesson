@@ -91,9 +91,9 @@ const Form = () => {
                         </small>
                     </div>
                 </div>
-                <div className="text-center col-md-6 offset-md-3">
+                <div className="text-center col-md-6 offset-md-3 mb-5">
                     <button
-                        className="btn btn-success"
+                        className="btn btn-success mb-5"
                         // submit button is disabled while isValidEmail or isValidUsername or isValidPassword is false
                         disabled={!isValidEmail || !isValidUsername || !isValidPassword}
                         type="submit">

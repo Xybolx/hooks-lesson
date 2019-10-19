@@ -38,13 +38,14 @@ export default useForm;`
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title lead" id="exampleModalLongTitle">useForm Code</h5>
+                            <h3 className="modal-title" id="exampleModalLongTitle">useForm Code</h3>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
                             <ClipboardItem
+                                header="Copy useForm Code To Clipboard"
                                 code={code}
                             />
                         </div>

@@ -18,6 +18,15 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
@@ -41,52 +50,54 @@
   background: transparent;
 }
 
-.list-group {
-  /* list-style-image: url("./imgs/logo192.png"); */
-  list-style-position: outside;
+ul {
   list-style-type: upper-alpha;
   text-align: left;
 }
 
-#reason-one {
-  /* overflow: hidden; /* Ensures the content is not revealed until the animation */
-  white-space: nowrap; /* Keeps the content on a single line */
+#reason0 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  /* border-right: .15em solid orange; */
+  white-space: nowrap;
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  /* letter-spacing: .5px; */
   animation: 
-    typing 18s steps(40, end),
-    blink-caret .75s step-end infinite;
+    typing 3.5s steps(40, end);
+    /* blink-caret .75s step-end infinite; */
+  animation-delay: 2s;  
 }
 
-#reason-two {
+#reason1 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .5px solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
+  /* border-right: .15em solid orange; */
+  white-space: nowrap;
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .5px; /* Adjust as needed */
   animation: 
-    typing 9s steps(40, end),
-    blink-caret .75s step-end infinite;
+    typing 3.5s steps(40, end),
+    fadeIn 3.5s;
+    /* blink-caret .75s step-end infinite; */
+  animation-delay: 4.5s;
 }
 
-#reason-three {
+#reason2 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .5px solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
+  /* border-right: .15em solid orange; */
+  white-space: nowrap;
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .5px; /* Adjust as needed */
   animation: 
-    typing 12s steps(40, end),
-    blink-caret .75s step-end infinite;
+    typing 3.5s steps(40, end),
+    fadeIn 3.5s;
+    /* blink-caret .75s step-end infinite; */
+  animation-delay: 8.25s;  
 }
 
-#reason-four {
+#reason3 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .5px solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
+  /* border-right: .15em solid orange; */
+  white-space: nowrap;
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .5px; /* Adjust as needed */
   animation: 
-    typing 15s steps(40, end),
-    blink-caret .75s step-end infinite;
+    typing 3.5s steps(40, end),
+    fadeIn 3.5s;
+    /* blink-caret .75s step-end infinite; */
+  animation-delay: 12.25s;  
 }

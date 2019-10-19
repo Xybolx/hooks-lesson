@@ -27,7 +27,7 @@ const ClipboardItem = ({ header, code }) => {
 
 
     return (
-        <div className="text-left">
+        <div className="text-center">
             <h4 className="lead">
                 {header}
                 <CopyToClipboard style={{ textAlign: "center" }} onCopy={onCopy} text={code}>

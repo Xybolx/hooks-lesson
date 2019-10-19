@@ -60,13 +60,14 @@ export default Counter;`;
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title lead" id="exampleModalLongTitle">Hooks Counter Code</h5>
+                            <h3 className="modal-title" id="exampleModalLongTitle">Hooks Counter</h3>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
                             <ClipboardItem
+                                header="Copy Hooks Counter To Clipboard"
                                 code={code}
                             />
                         </div>

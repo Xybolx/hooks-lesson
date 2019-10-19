@@ -49,7 +49,6 @@ const useSpeechRecognition = (props = {}) => {
 
     return {
         listen,
-        setListening,
         listening,
         stop,
         supported
