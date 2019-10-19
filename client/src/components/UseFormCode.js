@@ -9,21 +9,21 @@ const UseFormCode = () => {
 const useForm = () => {
 
     // state
-    const [state, setState] = useState({});
+    const [values, setValues] = useState({});
 
     // handle change
     const handleChange = ev => {
         ev.persist();
         const { name, value } = ev.target;
-        setState(state => ({ ...state, [name]: value }));
+        setState(values => ({ ...values, [name]: value }));
     };
 
     // handle clear form
     const handleClearForm = () => {
-        setState({});
+        setValues({});
     };
 
-    return [state, handleChange, handleClearForm];
+    return [values, handleChange, handleClearForm];
 
 };
 

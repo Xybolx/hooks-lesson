@@ -32,18 +32,18 @@ const SpeechRecognition = () => {
     const onResult = result => {
         setValue(result);
         console.log(result);
-        if (result.includes("computer why should we use hooks")) {
+        if (result.includes("why should we use hooks")) {
             setIsSpeaking(true);
         }
     };
 
     const { listen, listening, stop, supported } = useSpeechRecognition({ onResult, onEnd });
 
-    useSpeechSynthesis(`some reasons to use hooks are:...${reasonArray[0]}, ...${reasonArray[1]}, ...${reasonArray[2]} and..., ...${reasonArray[3]}`, isSpeaking);
+    useSpeechSynthesis(`some reasons to use hooks are:...,${reasonArray[0]}, ...${reasonArray[1]}, ...${reasonArray[2]} and..., ...${reasonArray[3]}`, isSpeaking);
 
     const toggle = 
-    listening
-        ? () => {
+    listening ? 
+        () => {
             stop();
             setIsSpeaking(false);
         }
@@ -57,6 +57,7 @@ const SpeechRecognition = () => {
         <div>
             <div>
                 <button type="button" className="btn btn-link btn-md" onClick={toggle}><i className="fas fa-microphone-alt" /> {listening ? 'Stop Listening' : 'Start Listening'}</button>
+                <button type="button" className="btn btn-link btn-md" onClick={() => setIsSpeaking(!isSpeaking)}><i className="fas fa-bullhorn" /> {isSpeaking ? 'Stop Speaking' : 'Speak'}</button>
             </div>
             <ul>
                 <li style={isSpeaking ? { display: "block" } : { display: "none" }} ref={el0} id="reason0" className="lead">A. We can write less code</li>

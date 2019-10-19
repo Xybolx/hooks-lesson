@@ -6,7 +6,7 @@ const FormClassCode = () => {
     const code =
         `import React, { Component } from "react";
 
-class FormClass extends Component {
+class Form extends Component {
 
         // state
         state = {
@@ -150,7 +150,7 @@ class FormClass extends Component {
     };
 };
 
-export default FormClass;`
+export default Form;`
 
     return (
         <div>

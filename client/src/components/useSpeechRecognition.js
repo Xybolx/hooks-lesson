@@ -4,8 +4,8 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 
 const useSpeechRecognition = (props = {}) => {
     const {
-        onEnd = () => { },
-        onResult = () => { }
+        onEnd = () => {},
+        onResult = () => {}
     } = props;
     const recognition = useRef(null);
     const [listening, setListening] = useState(false);
@@ -35,8 +35,8 @@ const useSpeechRecognition = (props = {}) => {
 
     const stop = () => {
         if (!listening) return;
-        recognition.current.onresult = () => { };
-        recognition.current.onend = () => { };
+        recognition.current.onresult = () => {};
+        recognition.current.onend = () => {};
         setListening(false);
         recognition.current.stop();
         onEnd();
