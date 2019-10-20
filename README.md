@@ -1,1 +1,1 @@
-A lesson in hooks, complete with snippets to copy to the clipboard.
+A lesson in hooks, complete with snippets to copy to the clipboard. On the Why? tab you can either push "Start Listening" and say "computer why should we use hooks" or push "Speak" to hear the message.
