@@ -168,7 +168,7 @@ export default Form;`
                         </div>
                         <div className="modal-body">
                             <ClipboardItem
-                                header="Copy Class Form Code To Clipboard"
+                                header="Copy To Clipboard"
                                 code={code}
                             />
                         </div>

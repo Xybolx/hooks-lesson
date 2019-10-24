@@ -6,9 +6,12 @@ import { useEffect, useState } from "react";
 const useValidate = values => {
 
     // state
-    const [isValidEmail, setIsValidEmail] = useState(false);
-    const [isValidUsername, setIsValidUsername] = useState(false);
-    const [isValidPassword, setIsValidPassword] = useState(false);
+    const [errors, setErrors] = useState({
+        isValidEmail: false,
+        isValidUsername: false,
+        isValidPassword: false
+    });
+
 
     // function to validate inputs
     // useEffect replaces componentDidMount/DidUpdate/WillUnmount and runs only when it's dependencies change
@@ -20,41 +23,41 @@ const useValidate = values => {
 
         // if the email input is not empty and it matches our regEx set isValidEmail to true
         if (values.email && emailMatch) {
-            setIsValidEmail(true);
+            setErrors((errors => ({ ...errors, isValidEmail: true })));
             // if the email input does not match our regEx set isValidEmail to false
         } else if (!emailMatch) {
-            setIsValidEmail(false);
+            setErrors((errors => ({ ...errors, isValidEmail: false })));
         }
 
         // if the username input is not empty and it matches our regEx set isValidUsername to true
         if (values.username && usernameMatch) {
-            setIsValidUsername(true);
+            setErrors((errors => ({ ...errors, isValidUsername: true })));
             // if the username input does not match our regEx set isValidUsername to false
         } else if (!usernameMatch) {
-            setIsValidUsername(false);
+            setErrors((errors => ({ ...errors, isValidUsername: false })));            
         }
 
         // if the password input is not empty and it matches our regEx set isValidPassword to true
         if (values.password && passwordMatch) {
-            setIsValidPassword(true);
+            setErrors((errors => ({ ...errors, isValidPassword: true })));           
             // if the password input does not match our regEx set isValidPassword to false
         } else if (!passwordMatch) {
-            setIsValidPassword(false);
+            setErrors((errors => ({ ...errors, isValidPassword: false })));                        
         }
         
         // useEffect's dependencies array
         // if we want it to run just once (like componentDidMount) we would pass an empty array here
     }, [values]);
 
-    // function to set isValidUsername/Password to false when we submit our form
+    // function to set errors to false when we submit our form
     const resetValidate = () => {
-        setIsValidEmail(false);
-        setIsValidUsername(false);
-        setIsValidPassword(false);
+        setErrors((errors => ({ ...errors, isValidEmail: false })));            
+        setErrors((errors => ({ ...errors, isValidUsername: false })));            
+        setErrors((errors => ({ ...errors, isValidPassword: false })));           
     };
 
-    // returning the state of isValidUsername, isValidPassword, and our resetValidate function to the component we call this hook from
-    return [isValidEmail, isValidUsername, isValidPassword, resetValidate];
+    // returning the state of errors and our resetValidate function to the component we call this hook from
+    return [errors, resetValidate];
 
 };
 

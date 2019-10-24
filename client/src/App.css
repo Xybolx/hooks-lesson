@@ -101,3 +101,11 @@ ul {
     /* blink-caret .75s step-end infinite; */
   animation-delay: 12.25s;  
 }
+
+input:valid {
+  border: solid green;
+}
+
+input:invalid {
+  border: solid red;
+}

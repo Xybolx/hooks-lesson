@@ -10,7 +10,7 @@ import UseValidateCode from "./UseValidateCode";
 const Snippets = () => {
 
     return (
-        <div>
+        <div className="mb-3">
             <h1 className="display-4">Code Snippets</h1>
             <CounterClassCode />
             <CounterCode />

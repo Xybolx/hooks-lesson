@@ -71,7 +71,7 @@ export default Counter;`;
                         </div>
                         <div className="modal-body">
                             <ClipboardItem
-                                header="Copy Class Counter To Clipboard"
+                                header="Copy To Clipboard"
                                 code={code}
                             />
                         </div>
